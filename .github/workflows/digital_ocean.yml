@@ -16,7 +16,8 @@ jobs:
 
     - name: Build container image
       run: |
-        mvnw package
+        chmod +x mvnw
+        ./mvnw package
         docker build -t gagandeep39/helloworld:$(echo $GITHUB_SHA | head -c7) .
 
     - name: Docker Login
