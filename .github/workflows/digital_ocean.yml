@@ -15,7 +15,9 @@ jobs:
       uses: actions/checkout@master
 
     - name: Build container image
-      run: docker build -t gagandeep39/helloworld:$(echo $GITHUB_SHA | head -c7) .
+      run: |
+        mvnw package
+        docker build -t gagandeep39/helloworld:$(echo $GITHUB_SHA | head -c7) .
 
     - name: Docker Login
       env:
